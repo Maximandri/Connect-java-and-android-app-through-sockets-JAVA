@@ -4,16 +4,11 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-
 public class SocketServer extends Thread {
 	private ServerSocket serverSocket;
 	private int port;
 	private boolean running = false;
-	
-	private static final Logger logger = LogManager.getLogger(SocketServer.class);
-	
+
 	public SocketServer(int port) {
 		this.port = port;
 	}
@@ -37,7 +32,7 @@ public class SocketServer extends Thread {
 		running = true;
 		while (running) {
 			try {
-				logger.info("Listening for a connection");
+				System.out.println("Listening for a connection");
 
 				// Call accept() to receive the next connection
 				Socket socket = serverSocket.accept();

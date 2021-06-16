@@ -1,9 +1,13 @@
 package com.apiplayer.main;
 
+import java.awt.EventQueue;
+import java.io.FileNotFoundException;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 
+import com.apiplayer.forms.LoginForm;
 import com.apiplayer.socket.SocketServer;
 
 public class Main {
@@ -14,32 +18,25 @@ public class Main {
 	
 	private static final Logger logger = LogManager.getLogger(Main.class);
 	
-	public static void main(String[] args) {
-
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginForm frame = new LoginForm();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		/*
 		SocketServer server = new SocketServer(6000);
 		
 		logger.info("Running server...");
 		server.startServer();
-
-		/*
-		 * System.out.println(System.getProperty("user.name"));
-		 * 
-		 * List<String> windowsUsers = new ArrayList<String>(); for (File userDirectory
-		 * : new File("C:/Users").listFiles()) {
-		 * windowsUsers.add(userDirectory.getName()); }
-		 * 
-		 * System.out.println(windowsUsers);
-		 * 
-		 * String dirName = "/users/cameanu/";
-		 * 
-		 * File file = new File(dirName); String[] directories = file.list(new
-		 * FilenameFilter() {
-		 * 
-		 * @Override public boolean accept(File current, String name) { return new
-		 * File(current, name).isDirectory(); } });
-		 * System.out.println(Arrays.toString(directories));
-		 */
-
+		*/
 		/*
 		 * ProcessBuilder p = new
 		 * ProcessBuilder("C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"
